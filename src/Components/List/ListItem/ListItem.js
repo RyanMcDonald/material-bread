@@ -21,7 +21,9 @@ class ListItem extends Component {
     icon: PropTypes.node,
     actionItem: PropTypes.node,
     leadingActionItem: PropTypes.node,
+    textProps: PropTypes.object,
     textStyle: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
+    secondaryTextProps: PropTypes.object,
     secondaryTextStyle: PropTypes.oneOfType([
       PropTypes.object,
       PropTypes.array,
@@ -33,7 +35,9 @@ class ListItem extends Component {
       text,
       secondaryText,
       disabled,
+      textProps,
       textStyle,
+      secondaryTextProps,
       secondaryTextStyle,
     } = this.props;
 
@@ -44,7 +48,8 @@ class ListItem extends Component {
             styles.listItemText,
             { color: disabled ? 'rgba(0,0,0,0.47)' : 'rgba(0,0,0,0.87)' },
             textStyle,
-          ]}>
+          ]}
+          {...textProps}>
           {text}
         </BodyText>
         {secondaryText ? (
@@ -53,7 +58,8 @@ class ListItem extends Component {
               styles.listItemSecondaryText,
               { color: 'rgba(0,0,0,0.57)' },
               secondaryTextStyle,
-            ]}>
+            ]}
+            {...secondaryTextProps}>
             {secondaryText}
           </Caption>
         ) : null}
